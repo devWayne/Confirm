@@ -1,0 +1,26 @@
+{
+  "name": "Toast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devWayne/Toast.git"
+  },
+  "keywords": [
+    "toast"
+  ],
+  "author": "VI",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devWayne/Toast/issues"
+  },
+  "homepage": "https://github.com/devWayne/Toast",
+  "dependencies": {
+    "cl-css": "^1.0.0",
+    "cl-overlay": "^1.0.0"
+  }
+}
