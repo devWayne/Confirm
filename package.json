@@ -1,5 +1,5 @@
 {
-  "name": "Toast",
+  "name": "cl-confirm",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/devWayne/Toast.git"
+    "url": "https://github.com/devWayne/Confirm.git"
   },
   "keywords": [
     "toast"
@@ -16,11 +16,11 @@
   "author": "VI",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/devWayne/Toast/issues"
+    "url": "https://github.com/devWayne/Confirm/issues"
   },
-  "homepage": "https://github.com/devWayne/Toast",
+  "homepage": "https://github.com/devWayne/Confirm",
   "dependencies": {
     "cl-css": "^1.0.0",
-    "cl-overlay": "^1.0.0"
+    "cl-overlay": "~1.0.0"
   }
 }

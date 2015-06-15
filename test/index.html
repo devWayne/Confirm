@@ -1,0 +1,20 @@
+<html>
+<meta charset="UTF-8"/>
+
+<head>
+    <title>Confirm</title>
+</head>
+
+<body>
+    <button id="btn">Confirm</button>
+    <script src="../confirm.js"></script>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+		var confirm = new Confirm({dbtn:'确定',content:'测试弹窗'});
+        }
+    </script>
+
+</body>
+
+</html>
