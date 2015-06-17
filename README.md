@@ -15,16 +15,17 @@ var _confirm = new Confirm();
 
 ```
 option:{
-    "dbtn": "确定",
-    "cbtn": "取消",
+    //left
+    "leftBtn": "确定",
+    "rightBtn": "取消",
     "content": "",
-    success: function() {
+    leftCb: function(confirm) {
 
     },
-    cancel: function() {
-        this.hide();
-        this.ol.hide();
+    rightCb: function(confirm) {
+	
     },
+    animateClass:''
     container: document.body
 }
 

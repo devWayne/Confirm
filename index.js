@@ -3,16 +3,17 @@ var Overlay = require('cl-overlay').Overlay;
 var Css = require('cl-css');
 
 var DEFAULT = {
-    "dbtn": "确定",
-    "cbtn": "取消",
+    "leftBtn": "确定",
+    "rightBtn": "取消",
     "content": "",
-    success: function() {
+    "leftCb": function() {
 
     },
-    cancel: function() {
-        this.hide();
-        this.ol.hide();
+    "rightCb": function() {
+        this.remove();
+        this.ol.remove();
     },
+    animateClass:'',
     container: document.body
 }
 
@@ -29,6 +30,7 @@ function extend(destination, source, override) {
     }
     return destination;
 };
+
 /**
  * @param {Object} opt Description
  * @return {Element} description
@@ -38,40 +40,51 @@ function Confirm(opt) {
     //Duplicate Check
     if (document.getElementsByClassName('cl-confirm').length > 0) return;
 
-    opt = extend(DEFAULT,opt);
+    this.opt = extend(DEFAULT, opt);
 
     //Element collection
     var tplEl = tpl(opt);
     this.el = tplEl.el;
     this.content = tplEl.content;
-    this.content.textContent = opt['content'];
+    this.content.textContent = this.opt['content'];
     this.leftBtn = tplEl.leftBtn;
-    this.leftBtn.textContent = opt['dbtn'];
+    this.leftBtn.textContent = this.opt['leftBtn'];
     this.rightBtn = tplEl.rightBtn;
-    this.rightBtn.textContent = opt['cbtn'];
-    container.appendChild(this.el);
+    this.rightBtn.textContent = this.opt['rightBtn'];
+    this.opt.container.appendChild(this.el);
+
+    if(this.opt.animateClass != undefined && this.opt.animateClass !=''){
+    	var classList = this.opt.animateClass.split(" ");
+    	if(classList && classList.length >0){
+		classList.forEach(function(v,idx){
+			this.el.classList.add(v);	
+		}.bind(this));
+	}else{
+		this.el.classList.add(this.opt.animateClass)	
+	}
+    }
 
     //Overlay
     var ol = this.ol = new Overlay();
     ol.el.addEventListener('click', function(e) {
-        ol.hide();
-        this.hide();
+        ol.remove();
+        this.remove();
     }.bind(this));
     ol.el.addEventListener('touchstart', function(e) {
-        ol.hide();
-        this.hide();
+        ol.remove();
+        this.remove();
     }.bind(this));
 
 
     //Bind event
     this.rightBtn.addEventListener('click', function(e) {
-        var cancelFunc = opt.cancel.bind(this);
-	cancelFunc();
+        var rightFunc = this.opt.rightCb.bind(this);
+        rightFunc(this);
     }.bind(this));
 
     this.leftBtn.addEventListener('click', function(e) {
-        var successFunc = opt.success.bind(this);
-	successFunc();
+        var leftFunc = this.opt.leftCb.bind(this);
+        leftFunc(this);
     }.bind(this))
 
 
@@ -80,19 +93,8 @@ function Confirm(opt) {
 /**
  * @return {void} description
  */
-Confirm.prototype.show = function() {
-    Css(this.el, {
-        display: 'block'
-    });
-};
-
-/**
- * @return {void} description
- */
-Confirm.prototype.hide = function() {
-    Css(this.el, {
-        display: 'none'
-    });
+Confirm.prototype.remove = function() {
+   this.opt.container.removeChild(this.el);
 };
 
 module.exports = {

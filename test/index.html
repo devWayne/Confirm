@@ -1,8 +1,8 @@
 <html>
-<meta charset="UTF-8"/>
-
 <head>
+    <meta charset="UTF-8" />
     <title>Confirm</title>
+    <link rel="stylesheet" href="animate.css" type="text/css"/>
 </head>
 
 <body>
@@ -11,7 +11,11 @@
     <script>
         var btn = document.getElementById('btn');
         btn.onclick = function() {
-		var confirm = new Confirm({dbtn:'确定',content:'测试弹窗'});
+            var confirm = new Confirm({
+                leftBtn: '确定',
+                content: '测试弹窗',
+		animateClass:'animated bounceIn'
+    	});
         }
     </script>
 
