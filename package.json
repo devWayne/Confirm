@@ -1,10 +1,10 @@
 {
   "name": "cl-confirm",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "open test/index.html"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/devWayne/Confirm",
   "dependencies": {
-    "cl-css": "^1.0.0",
+    "cl-css": "~1.0.0",
     "cl-overlay": "~1.0.0"
   }
 }
