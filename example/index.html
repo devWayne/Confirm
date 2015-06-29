@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Confirm</title>
+    <link rel="stylesheet" href="animate.css" type="text/css"/>
+</head>
+
+<body>
+    <button id="btn">Confirm</button>
+    <script src="../confirm.js"></script>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+            var confirm = new Confirm({
+                leftBtn: '确定',
+                content: '测试弹窗',
+		animateClass:'animated bounceIn'
+    	});
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 var tpl = require('./lib/tpl');
 var Overlay = require('cl-overlay').Overlay;
-var Css = require('cl-css');
+var Css = require('cl-css').Css;
 
 var DEFAULT = {
     "leftBtn": "确定",
@@ -11,9 +11,8 @@ var DEFAULT = {
     },
     "rightCb": function() {
         this.remove();
-        this.ol.remove();
     },
-    animateClass:'',
+    animateClass: '',
     container: document.body
 }
 
@@ -53,25 +52,25 @@ function Confirm(opt) {
     this.rightBtn.textContent = this.opt['rightBtn'];
     this.opt.container.appendChild(this.el);
 
-    if(this.opt.animateClass != undefined && this.opt.animateClass !=''){
-    	var classList = this.opt.animateClass.split(" ");
-    	if(classList && classList.length >0){
-		classList.forEach(function(v,idx){
-			this.el.classList.add(v);	
-		}.bind(this));
-	}else{
-		this.el.classList.add(this.opt.animateClass)	
-	}
+    if (this.opt.animateClass != undefined && this.opt.animateClass != '') {
+        var classList = this.opt.animateClass.split(" ");
+        if (classList && classList.length > 0) {
+            classList.forEach(function(v, idx) {
+                this.el.classList.add(v);
+            }.bind(this));
+        } else {
+            this.el.classList.add(this.opt.animateClass)
+        }
     }
 
     //Overlay
     var ol = this.ol = new Overlay();
+
     ol.el.addEventListener('click', function(e) {
-        ol.remove();
         this.remove();
     }.bind(this));
+
     ol.el.addEventListener('touchstart', function(e) {
-        ol.remove();
         this.remove();
     }.bind(this));
 
@@ -94,7 +93,8 @@ function Confirm(opt) {
  * @return {void} description
  */
 Confirm.prototype.remove = function() {
-   this.opt.container.removeChild(this.el);
+    this.opt.container.removeChild(this.el);
+    this.ol.remove();
 };
 
 module.exports = {

@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var tpl = __webpack_require__(1);
 	var Overlay = __webpack_require__(2).Overlay;
-	var Css = __webpack_require__(3);
+	var Css = __webpack_require__(3).Css;
 
 	var DEFAULT = {
 	    "leftBtn": "确定",
@@ -67,7 +67,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    "rightCb": function() {
 	        this.remove();
-	        this.ol.remove();
 	    },
 	    animateClass:'',
 	    container: document.body
@@ -122,12 +121,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    //Overlay
 	    var ol = this.ol = new Overlay();
+	    
 	    ol.el.addEventListener('click', function(e) {
-	        ol.remove();
 	        this.remove();
 	    }.bind(this));
+
 	    ol.el.addEventListener('touchstart', function(e) {
-	        ol.remove();
 	        this.remove();
 	    }.bind(this));
 
@@ -151,6 +150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	Confirm.prototype.remove = function() {
 	   this.opt.container.removeChild(this.el);
+	   this.ol.remove();
 	};
 
 	module.exports = {
@@ -162,7 +162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Css = __webpack_require__(3);
+	var Css = __webpack_require__(3).Css;
 
 	var CSSObj = {
 
@@ -258,7 +258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Css = __webpack_require__(3);
+	var Css = __webpack_require__(3).Css;
 
 	/**
 	 * Constrcutor
@@ -368,7 +368,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	}
 
-	true ? module.exports = Css : this[Css] = Css;
+	module.exports = {
+	    Css: Css
+	}
 
 
 /***/ }
